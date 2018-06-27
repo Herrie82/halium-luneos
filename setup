@@ -1,0 +1,14 @@
+#!/bin/bash
+
+LUNEOS_ROOT="$(dirname "$(readlink -f "${0}")")"
+REPO_ROOT="${LUNEOS_ROOT}/../.."
+
+if [ -z $DEVICE ]; then
+    echo "Please specify a device codename"
+    exit 0
+fi
+
+if [ -f $LUNEOS_ROOT/luneos.xml ]; then
+    # Link the luneos manifest to the local_manifests folder
+    ln $LUNEOS_ROOT/luneos.xml $REPO_ROOT/.repo/local_manifests/luneos.xml
+fi
