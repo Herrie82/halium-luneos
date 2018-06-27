@@ -3,9 +3,9 @@
 LUNEOS_ROOT="$(dirname "$(readlink -f "${0}")")"
 REPO_ROOT="${LUNEOS_ROOT}/../.."
 
-if [ -z $DEVICE ]; then
-    echo "Please specify a device codename"
-    exit 0
+# Test if the folder exists
+if ! [ -d $REPO_ROOT/.repo/local_manifests/ ]; then
+    mkdir $REPO_ROOT/.repo/local_manifests/
 fi
 
 if [ -f $LUNEOS_ROOT/luneos.xml ]; then
